@@ -1,0 +1,28 @@
+topic:
+  name: krissh-topic-1
+
+server:
+  port: 8181
+
+spring:
+  kafka:
+    bootstrap-servers: "127.0.0.1:9092"
+    producer:
+      key-serializer: "org.apache.kafka.common.serialization.StringSerializer"
+      value-serializer: "io.confluent.kafka.serializers.KafkaAvroSerializer"
+      properties:
+        schema:
+          registry:
+            url: "http://127.0.0.1:8081"
+    consumer:
+      group-id: "group-1"
+      key-deserializer: "org.apache.kafka.common.serialization.StringDeserializer"
+      value-deserializer: "io.confluent.kafka.serializers.KafkaAvroDeserializer"
+      autoOffsetReset: "earliest"
+      properties:
+        schema:
+          registry:
+            url: "http://127.0.0.1:8081"
+        specific:
+          avro:
+            reader: "true"

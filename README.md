@@ -1,0 +1,1 @@
+# kafka-avro-schema-registry
